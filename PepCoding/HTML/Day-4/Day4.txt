@@ -1,0 +1,55 @@
+Today's Class :
+1) Homework Discuss
+2) Attribute Selector
+3) Table Border
+4) Web Page
+
+Attribute Selector : 
+Attribute means tag k andr jo key-value pair hote h usko attribute bolte h
+(properties that we can add inside tags).
+Example : <a href="-----" target="blank">content</a>
+            (href=key, "-----"=value) (target=key, "blank"=value)
+
+What is Attribute Selector?
+<a href="Nados.io" target="blank">NADOS</a>
+To jb mai NADOS pe click karunga to new tab open hoga aur NADOS khul jaega
+(Ye hote h <a> tag). Ab aise <a> tag ko select krne k liye hm attribute Selector use krnge
+
+How to write Attribute Selector?
+    tag_name[href="https://Nados.io"(sqr brackt k andr attribute)]
+    {
+        We can write Style here -
+        color: blue;
+    }
+
+Example :   a[href="https://Nados.io"(sqr brackt k andr attribute)]
+            {
+                We can write Style here -
+                color: blue;
+            }
+    <!--Attribute Selector-->
+    <style>
+             a[target="_blank"]{
+            color: lightcoral;
+        }
+
+        a[href="https://nados.io"]{
+            color: blueviolet;
+        }
+    </style>
+Note : Ye selectors saare key value pair attribute wale tags pe lagte hai
+
+
+Table Border :
+
+
+
+
+Web Page Creation :
+Note : If we have any problem then we will break it into smaller parts.
+We are dividing our web page into 4 parts -
+1) (a) DEV101, (b) HTML CSS JAVASCRIPT  (2 parts)
+2) Photo                                (1 part)
+3) (a) HTML+ (b) CSS+ (c) JAVASCRIPT    (3 parts)
+4) Pepcoding                            (1 part)
+Isse ek time pe ek problem pe focus kr paate h.

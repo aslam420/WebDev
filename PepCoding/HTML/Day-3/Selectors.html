@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selectors</title>
+    <style>
+        /* Universal Selector */
+        *{
+            background-color: black;
+        }
+
+        /* (1.a) Element Selectors */
+        div{
+            color:red;
+            font-size: 48px;
+        }
+        /* (1.b) class selector */
+        .textpink{
+            color:lightblue;
+        }
+        .largetext{
+            font-size: 30px;
+        }
+        /* .textpink.largetext{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        } */
+
+        /* ID Selector */
+        #unique{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+        }
+        /* Grouping Selector */
+        h4,a,h3{
+            color: lightgreen;
+        }
+
+/* Combinator Selector*/
+        /* (a)Descendant Selector */
+        div p span{
+            color: rgb(202, 131, 145);
+        }
+
+        /* (b) Child Selector */
+        div>p>span{
+            color: aquamarine
+        }
+    </style>
+</head>
+<body>
+    <!-- (1.a) element selector -->
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem nesciunt temporibus debitis mollitia, quibusdam cumque excepturi sequi accusantium nemo magni laborum unde a perspiciatis veniam quam porro, est modi harum?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci quae natus pariatur. Labore porro assumenda impedit quia, sit distinctio unde nostrum eligendi est qui, amet magnam dolor quae corrupti magni?</p>
+    
+    <div>
+        <h1>First Heading</h1>
+        <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. At obcaecati sapiente repudiandae aspernatur omnis minima, unde et iure pariatur quas itaque ipsum magni, dolores recusandae eligendi consequuntur quae tempora adipisci.
+        </p>
+    </div>
+
+    <!-- (1.b) class selector -->
+    <h1>Class Selectors</h1>
+
+    <p class="textpink largetext" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium similique at, adipisci autem non sint, libero reiciendis officia, quisquam maxime molestiae quis! Pariatur quisquam ipsam earum commodi. Provident, perferendis explicabo.</p>
+
+    <p class="largetext">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium similique at, adipisci autem non sint, libero reiciendis officia, quisquam maxime molestiae quis! Pariatur quisquam ipsam earum commodi. Provident, perferendis explicabo.</p>
+
+    <p class="textpink">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium similique at, adipisci autem non sint, libero reiciendis officia, quisquam maxime molestiae quis! Pariatur quisquam ipsam earum commodi. Provident, perferendis explicabo.</p>
+
+    <!-- ID Selector -->
+    <h1>ID Selectors</h1>
+
+    <p class="textpink largetext" id="unique">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium similique at, adipisci autem non sint, libero reiciendis officia, quisquam maxime molestiae quis! Pariatur quisquam ipsam earum commodi. Provident, perferendis explicabo.</p>
+
+    <p class="largetext">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium similique at, adipisci autem non sint, libero reiciendis officia, quisquam maxime molestiae quis! Pariatur quisquam ipsam earum commodi. Provident, perferendis explicabo.</p>
+
+    <p class="textpink">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium similique at, adipisci autem non sint, libero reiciendis officia, quisquam maxime molestiae quis! Pariatur quisquam ipsam earum commodi. Provident, perferendis explicabo.</p>
+
+    <!-- Grouping Selector -->
+    <h4>I am H1</h4>
+
+    <a href="https://nados.io" target="blank">NADOS</a>
+    <h3>i am</h3>
+
+
+<!-- COMBINATOR SELECTOR -->
+    <!-- (A) Descendant Selector -->
+    
+    <div>
+        <p>
+            <span>I am a direct Child</span>
+        </p>
+    </div>
+
+    <div>
+        <span>
+            <p>
+                <span>I am a Descendant/indirect child</span>
+            </p>
+        </span>
+    </div>
+
+
+</body>
+</html>

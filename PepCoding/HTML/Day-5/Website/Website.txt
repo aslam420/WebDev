@@ -1,0 +1,222 @@
+
+Note : Link = flukeout.github.io
+Here we can practice CSS selectors
+
+Day-5 :
+CSS : New concepts use kr k styling apply krnge -
+1) px, rem, em, % ?
+2) box model
+3) flexbox
+Itna krne k baad aaram se bna paenge
+
+Note : Itna acche se kr liye to Website as a Homework milega
+
+HTML+CSS+JAVASCRIPT ko DEV101 k parallel m laana h to use liye kya krna h?
+Isko nav bar banaenge aur styling krnge -
+<nav>
+        <h1>DEV 101</h1>
+    <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JAVASCRIPT</li>
+    </ul>
+</nav>
+Nav bar banane k baad inko ek container/line m lani h. To isko ek line m krne k liye class use krnge -
+<div class="navbar">
+        <nav>
+            <h1>DEV 101</h1>
+        <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JAVASCRIPT</li>
+        </ul>
+    </nav>
+</div>
+
+Ab styling krnge -
+.navbar{
+    display: flex;
+}
+Ye flex property in dono ko side by side put kr degi
+.navbar>nav{
+    display: flex;
+}
+
+Ab DEV101 and HTML+CSS+JAVASCRIPT ko ek ek kone m daalnge -
+.navbar>nav{
+    display: flex;
+    justify-content: space-between;
+}
+
+Ab mujhe HTML+CSS+JAVASCRIPT ko side by side krni h to uske liye hm kya krnge?
+<ul> k andr wali chijo ko mjhe side by side krni h
+
+
+Phle kuch concepts pdh lnge fir continue krnge -
+1) 1) px, rem, em, %, vw, vh
+Hum CSS likhte h to CSS m humein kuch units chaiye hote hai jaise image h aur usse
+badi/choti krni h to humein kuch units chaiye honge to hm kis measurement
+m bolnge ki badi/choti ho jao? To uske liye hm ye units use krte hai.
+
+CSS k units 2 types k hote hai -
+1) absolute -> px, cm, mm, in 
+2) relative -> jo kisi k respect m differ krte ho.
+                Ex : rem, em, vw, vh -> relative to viewport
+What is ViewPort?
+Jo humari laptop ki screen h usko hm viewport bolte hai aur ye differ isliye
+karte hai qki screen ka jo resolution hota hai usse fark pdta hai (resolution
++ ScreenSize different different hota hai) 
+Note : Ab screen kitni v bdi aur choti ho 8 inch means 8 inch hi hoga ya pixel to pixel hi rhega.
+But agar hm relative units to ye relative hote h humare screen size se.
+
+(a)Pixel : px -> It was 1/96th of an inch.
+(b)rem -> relative to root element 
+(c)em-> relative to parent element (parent element ka fontsize ko base unit maana jaega(<html></html>))
+(d & e) vw & vh-> Agar mai koi v image  ki height and width likhtu hu aur mai likhta hu
+jo height hogi wo -> img{height: 10vh and width: 10vw} to height: 10vh means
+10% of your screen (view height) and width: 10vw means 10% of our screen width
+(view width) 
+
+Difference between these relative units -
+
+1) em ->
+<div class="main">
+        <div class="box px">I am 200 px wide</div>
+        <div class="box vw">I am 10vw wide</div>
+        <div class="box em">I am 10em wide</div>
+</div>
+
+em means class="em" wale k div ka jo parent element h i.e. class="main", uska font-size
+humne 30px set kr diya. To ab hm bolnge ki we are 10vm wide means 30px X 10 kr dega
+Qki 1em = 30px, -> 10emX30px = 300px
+
+Note : Development m koshish krnge ki hm pixel use naa kre. Qki kisi ki
+screen badi hai aur kisi ki choti to wo humein relative website ni dikhti.
+Ab meri screen 13.5 inch ki h aur agle ki 15 inch ki agr pixel 200px likhi h 
+to dono k screen m difference aa jaega. Because screen size is but pixel is fixed so 
+it will create difference.  
+
+Note : div grows according to our content.
+width= 100% (by default) but we can change by writing html{ width: 35px}
+height= according to content 
+
+2) rem -> root element se size pata lagta hai (root element by default = 16px)
+3) em -> parent element se size pata lagta hai 
+Note : font-size : 30px
+1 em = 30px
+width= 10em -> 10 x 30 px = 300px (parent element(<div class= name>) font-size)
+width= 10 rem -> 35px x 10 rem = 350px (root element(html) font-size)
+
+Note : root element = the element which is the root of our html page
+like the highest element in hierarchy (html)
+parent element : enclosed  <div class="name"> (parent)
+                                <div>content</div>  (child)
+                            </div>
+
+4) vw, vh -> Screen is measured in pixels
+If my screen is 800px(width) X 900px(height). So, when we write -
+    <div class="viewport">Hello</div>
+So, when we apply CSS on this -
+    .viewport{
+        width: 20vw;    -> 20% of my height
+        height: 30vh;   -> 30% of my width
+    }
+This means that 20% of my width and 30% of my height.
+So, if my width and height is -
+width -> 800    -> 20% -> 160px
+height -> 900   -> 30% -> 270px
+
+
+Difference between rem and em?
+
+rem -> all are descendent of this so all are 24px
+em -> child follows font-size of their parent so as the size of parent multiplies automatically child font-size increases.
+
+5) % -> jaise hmne em, rem pdhe to inka ek major chij thi ki font-size 
+Lekin % m agr hm likhnge -
+(parent) <div> (height, width : 400px)
+            <img>
+         </div>      
+
+    img{
+        height: 50%
+        width: 50%
+    }
+To ye apni parent ki lega like div ki height, width: 400 px h to 
+height: 400px ki 50% = 200px
+width : 400px ki 50% = 200px
+So, % apne parent container ki height width dekhta hai.
+
+
+New Topics in CSS -
+1) Margin
+2) Padding
+3) Border (already studied)
+We call all these concepts as 'CSS BOX MODEL'.
+
+    ----------------------------------------------
+    |           Margin                           |
+    |                                            |
+    |   ------------------Border---------------  |
+    |   |           Padding                   |  |
+    |   |       ------------------------      |  |
+    |   |       |        content       |      |  |
+    |   |       |                      |      |  |
+    |   |       ------------------------      |  |
+    |   |                                     |  |
+    |   ---------------------------------------  |
+    |                                            |
+    ----------------------------------------------
+
+CSS BOX MODEL m pehle hmari 'MARGIN' hoti hai fir 'BORDER' hoti h fir 'PADDING' hoti hai aur fir uske andr hmari 'CONTENT' hota h.
+Aur ye sb mil k ek CSS ka box banta hai.
+
+Jb hmne 50px margin daalan na to mera content h according to diagram hmare content k upr padding, border then margin aata h.
+To jo browser m jo box ban k aa rha h wo sirf bich wala content box h. Ab jb humne margin daala to usse ye hua ki
+50px ye content box ko push kr deta hai iske aas paas wale content se.
+
+Agr hm margin-top=50px; krte hai to ye sirf top se 50 px push hoga aur baaki sb same h.
+margin-left: 50px; krne pe sirf left se 50px push hoga
+margin-bottom: 50px; krne se niche se 50px push hoga
+
+border: (50px) (solid/dotted/groove) color(red, green)
+
+padding : content box k upar jagha create krta hai
+padding: 20px;  -> ye box k andr se content aur border k bich m 20px ki gap kr ki.
+
+
+Difference between Margin and Padding?
+Margin : It creates empty space without background-color.
+Padding : It creates empty space with bachground-color.
+Note : Margin creates space outside whereas Padding creates space inside.
+
+
+New Concept :
+1) Flexbox
+<div> 1 </div>  -> 1
+<div> 2 </div>  -> 2
+<div> 3 </div>  -> 3
+Ye render hone pe aisa dikhta h -
+    1
+    2
+    3
+Agar hum chahte h ki ye aisa dikhe -
+1   2   3
+Tb humare kaam m aati h flexbox. Iske kuch properties pdhnge like -
+ 
+ display: flex; (ye flex container m daal k display krega)
+
+(a) flex-direction -> Ye kehti h ki hm jo flex kr rhe wo kaise kre?
+By default to column wise hota hi h
+flex-direction: column/rowcolumn-reverse/row-reverse;
+flex-wrap: wrap; -> ekline m content bhrne lgega to ye next line wrap kr k manage kr degi
+felx-wrap: no wrap (default)
+flex-wrap : wrap-reverse; (reverse of wrap)
+justify-content: center;    -> ye content ko centre pe le aaega
+justify-content: end;   -> Ye content ko end m shift kr dega
+justify-content: space-around; (aas paas sb jgha space ho)
+justify-content: space-between; (do k bich max space jitne kr paega kr dega)
+justify-content: space-evenly; (even space distribute krega from left and right also)
+
+
+Note : site : flexbox froggy

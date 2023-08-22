@@ -1,0 +1,7 @@
+Git and GitHub are -
+1) different
+
+What is GIT?
+GIT is VCS means 'Version Control System'. VCS aisa koi system h jo humare 
+versions ko control kr pae means jo hm project bna rhe h/application etc, k 
+versions ko control kr pae.
