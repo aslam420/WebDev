@@ -1,6 +1,6 @@
 /*
 (3) IIFE - Immediately Invoked Function Expression (3rd Function) -
--> Wo function jisse jaisehi humne define kiya wo tabhi ki tabhi call ho jae
+-> Wo function jisse jaise hi humne define kiye wo tabhi k tabhi call ho jae
 aur humein unko alag se call na krna pde*/
 
 function add(a, b) {

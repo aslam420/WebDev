@@ -11,7 +11,7 @@ var obj = {
 
 }
 
-console.log("printed in temp : "+obj);
+console.log("printed in temp : " +obj);
 //pehle ye file run hogi
 //fir export krne pe fs.js m chala jaega aur isko abc copy kr k fir apne file se run krega
 module.exports=obj;
