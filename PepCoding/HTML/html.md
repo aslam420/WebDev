@@ -27,8 +27,8 @@ So, hum group of elements ko group krne k liye div tag use krte h.
     </div>
 
 List Tag : List banane k liye we use - <li> content </li>
-Humein ko samaan kharidna h to shopping k liye hm ek list banate h
-COntent ko list k form m represent krne k liye List Tag use krte h
+Humko samaan kharidna h to shopping k liye hm ek list banate h
+C0ntent ko list k form m represent krne k liye List Tag use krte h
     a
     b
     c

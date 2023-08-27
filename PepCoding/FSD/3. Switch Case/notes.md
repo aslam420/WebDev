@@ -63,3 +63,46 @@ switch(num)         //on the basis of num we are going to test
 }
 
 Output : five
+
+
+Q) If we are going to do a calculator then what are the operations we are targeting in that?
+1) Add (+)
+2) Subtract (-)
+3) Multiply (*)
+4) Divide (/)
+
+Solution :
+const num1 = 8, num2 = 2;
+let result;
+
+const operator = "+";
+
+switch(operator){
+    case "+" :
+        result = num1 + num2;
+        console.log("Perform Addition");
+        break;
+    case "-" :
+        result = num1 - num2;
+        console.log("Perform Subtraction");
+        break;
+    case "*" :
+        result = num1 * num2;
+        console.log("Perform Multiplication");
+        break;
+    case "/" :
+        result = num1 / num2;
+        console.log("Perform Division");
+        break;
+    default :
+        console.log("invalid operation")
+}
+console.log(result);
+
+
+Q) vowels = a, e, i, o, u
+   consonants val = "b"
+
+Check the value of val variable and based upon that print if it is a vowel or consonant.
+1) using if-else
+2) using switch statement

@@ -6,8 +6,8 @@ Day-10 : Agenda :
 Javascript :
 ------------
 -> 1995
--> WebPages k andr programme daalne k liye banayi gyi thi (like conditins
-for, if, loops. Agr user ne ye dabaya to ye aaega wo dabaya to wo aaega)
+-> WebPages k andr programme daalne k liye banayi gyi thi (like conditions,loops. 
+Agr user ne ye dabaya to ye aaega wo dabaya to wo aaega)
 -> Developed by NETSCAPE -> Navigator(Broswer tha iska). 
 To jo websites m JS use hota tha wo Navigator broswer m bahut bdhiya chlti thi
 Qki ab inke paas conditins thi agr user ne ye kiya to ye hoga which gives
@@ -50,6 +50,381 @@ Website for icons : favicon.io
 
 Day-11 : Later
 
+Function :
+3 types of functions in JS -
+
+1) Normal Function -
+----------------------
+function definition ->
+----------------------------------------------
+|-> function function_name(param1, param2){  |
+|    // do something                         |
+|   }                                        |                          
+|                                            |
+----------------------------------------------
+
+Step-1 -> Ek task formulate kr diye aur uske andr kn se steps krne h wo bta diye that is function
+
+function getReady() {
+    console.log(brush);
+    console.log(bathing);
+    console.log(breakfast);
+    console.log(coding);
+}
+
+Step-2 -> Ab function invoke/call krne ka tarika -
+
+->  function_name(arg1, args2);
+
+ Note : This is Normal function banane ka tarika aur usko call krne ka tarika
+
+Example :-                                                   */
+function add(a, b){
+    return a * b;
+}
+
+let ans = add(2, 6);
+console.log(ans);
+
+/*
+How this function is working?
+-> Jb v mai koi function invoke/call krta hu aur function calling k time koi
+    v function pass krte h like (2, 6) to isko hum bolte h function k ARGUMENT.
+    And as a whole -> add(2, 6), I am calling/invoking this function.
+    Note : Invoke hote h inn brackets se (2, 6). Jb kisi function k aage hum
+    ye brackets lga de to it means maine function ko call kiya.
+    To yaha 2, 6 pass hua h to a=2 & b=6 catch kiya. And isne a*b return
+    kr diya. Fir jb 12 return hua to 'ans' k andar aaya aur maine isko
+    print krwa diya.
+
+-> Functions are also treated as first class citizens in JavaScript.
+    (It is borrowed from President of USA. Like President of USA, function is 
+    first class citizen of JS. It is very important and can do anything (power))
+
+-> Functions can be passed as parameters/argument.     
+
+(2) FUNCTION EXPRESSION - (Second type of Function)
+-> means 'Variable k andr poori function daal dena.'
+
+Example-1 of Function Expression                                      */
+function calculator(str, e, f) {
+    if(str == 'add') {
+        return function add() {
+            console.log(e + f);
+        }
+    }
+    // else if(str == 'sub') {
+
+    // }
+}
+
+let returnedfunc = calculator('add', 2, 3);
+console.log("returned function is\n"+returnedfunc);
+returnedfunc();
+// It means function is a first class citizen.
+
+/*
+Explanation -
+->  Normal languages m variable k aage values daalte h like int, boolean
+    etc lekin JS k andar hm specify ni krte ki iss variable k andr kya
+    aa skta hai. JS m int, decimal, float sb k saath saath hm function
+    ko v ek value de skte h.
+->  Aaj humne dekha k variable k andr hm poora poora function v de skte hai
+    Jaise variable 'e' h uske andr humne poora poora function denote kr diya
+    Jaise returnedfunc function h ek variable h (line-65) aur maine jb
+    function return kiya na i.e. alculator('add', 2, 3);, calculator wale
+    function ne i.e. functions can be returned pdhe the wo wala kaam kiya.
+    Aur jb iss wale statement (let returnedfunc = calculator('add', 2, 3);) 
+    ne function return kiya na to returnedfunc wale varable k andr wo function
+    aa gya (line-65). To function variable m aa gya i.e. returnedfunc, to
+    hm function ko call/invoke krne k liye na variable k aage brackets lgate h
+    i.e. returnedfunc() aur isi chij ko hum FUNCTION EXPRESSION kehte hai.
+
+    Example-2 -                                                 */
+    let sayHi = function() {
+        console.log("Hello guys! I am function expression")
+    }
+
+    sayHi();
+
+// Note : Function Expression m function name dena important ni hota
+
+/*Example-3 ->
+
+    let variable_name = function() {
+        //do something
+    }
+        //name of variable is used to invoke the function
+    variable_name();
+
+
+*/
+
+// Example-4
+let sayBye = function abcd() {
+    console.log("Hello guys! I am new function expression")
+}
+
+sayBye();       // invoking function using variable_name+brackets
+console.log("Using this we can print whole function definition -\n"+sayBye);
+//(sayBye ne ek variable banaya aur usme function k poori definition daal di then humein uss function ko invoke krne k liye brackets daalne pdte h)
+// abcd();     //Error abcd is not defined
+
+
+// Example-4 -> we will print efgh
+function efgh() {
+    console.log("Hello guys! I am new function expression")
+}
+console.log("In this efgh is the variable under which we store the function -\n"+efgh);
+//efgh k andr poori fncn pdi h means efgh ek variable bana aur uske andr poori fncn k denfn daal di
+//jb fncn k defn daal di to uske baad humein uss fncn ko call krne k liye brackets daalne hote h
+efgh(); //brackets daale to fncn execute ho gya aur print ho gya
+
+//Note : All these are different examples of function expression
+//Storing function in variable then adding variable+brackets to call function.
+
+
+
+// Assignment - Calculator -> Addition, Subtraction, Division, Multiplication
+function calculator1(str, g, h) {
+    if(str == 'addition') {
+        return function addition() {
+            console.log(g + h);
+        }
+    }
+
+    else if(str == 'subtraction') {
+        return function subtraction(){
+            console.log(g - h);
+        }
+    }
+    else if(str == 'multiplication') {
+        return function multiplication(){
+            console.log(g * h);
+        }
+
+    }
+    else if(str == 'division') {
+        return function division(){
+            console.log(g % h);
+        }
+
+    }
+}
+
+let returnedFunction = calculator1('addition', 2, 3);
+console.log("returned function is\n"+returnedFunction);
+returnedFunction();
+
+(3) IIFE - Immediately Invoked Function Expression (3rd Function) -
+-> Wo function jisse jaise hi humne define kiye wo tabhi k tabhi call ho jae
+aur humein unko alag se call na krna pde*/
+
+function add(a, b) {
+    return a + b;
+}
+add(2, 3);
+
+// Instead of this we can write it as (immediate invoke) -
+let additionIIFE = (function add(a, b) {
+    return a + b;
+})(20, 30);
+console.log(""+additionIIFE);
+/* Inko maine brackets m enclosed kr diya fir main ek variable banaya 
+i.e additionIIFE 
+-> (function add(a, b) {
+    return a + b;
+    })(20, 30);
+-> Iss bracket k andr puri function ko wrap kr dene se ekhi baar m poori
+function ekhi baar m call ho jaati h declare hote hi
+-> Less code
+
+Arrays :
+// 2nd problem with var keyword -
+var num = 10;
+
+for(var j=0; j < num; j++){
+    if(j % 2 == 0){
+        console.log(j);
+    }
+}
+console.log("value of j is "+j);
+/*
+Maine jo i banaya wo iss for loop k andr banaya fir v mujhe iss for loop
+k bahar accessible h. Why?
+-> Qki jo var keyword h na wo function scoped hota hai. Function Scoped
+    means wo apne curly braces { ---- } k bahar accessible h.
+
+Example ->
+            {
+                this space between opening and closing of curly braces is a block
+            }
+
+*/
+
+for(let i=0; i < num; i++){ //Iss block k bich m i milega, iske bahar non-accessible h
+    if(i % 2 == 0){
+        console.log(i);
+    }
+}
+// console.log("value of i is "+i); //ReferenceError: i is not defined
+
+
+/*
+for loop k andr m block h uske bich m sirf i accessible h, uske bahar accessible nai h
+Agar hm 'i' ko access krna chahte h to 'i' ko bahar laana pdega
+*/
+
+let i;  //'i' ko access krne k liye bahar declare krna pdega
+for(i=0; i < num; i++){ //Iss block k bich m 'i' milega, iske bahar non-accessible h
+    if(i % 2 == 0){
+        console.log(i);
+    }
+}
+console.log("value of i is "+i); 
+
+// Example of Global Scoped -> we can access outside for loop also
+for(var k=0; k < num; k++){ //Iss block k bich m 'i' milega, iske bahar non-accessible h
+    if(k % 2 == 0){
+        console.log(num); //var num ko if loop k andr v print kra skte h bcoz it is global variable
+        console.log(k);
+        var hello = 1000;
+        console.log(k);
+    }
+}
+console.log("value of k is "+k); 
+console.log(hello);
+
+
+/* 
+(a) var keyword is a function scoped
+-> Agar maine koi function likha aur uske andr {curly braces ko 
+    block kehte h} mere blocks h. To agar mai var keyword iss function 
+    k andr bana rha hu to wo uss function k andr har jagha available hoga
+-> Jb hum function nahi likh rhe hote h to var keyword global scoped hote hai
+    aur jb function likh rhe hote hai to function scoped
+-> var num ko if loop k andr v print kra skte h bcoz it is global variable
+    So agar hum var keyword ko loop k andr initialize krte h to usko loop k
+    bahar se v print kra skte h.
+
+Note : index.js file k andr jo v code likhe h usko hm bolnge global scoped
+    like mai koi v variable kahi v likhu to usko kahi se v access kr skta hu
+    because jb hum var keyword ko initialize krta hu kisi value se to wo 
+    globally banta hai, ye ni ki if k andr bn rha h.  Isliye ye if k
+    bahar m print ho paa rha h
+
+ (b) let keyword is blocked scoped -
+-> Agar mai let keyword banata hu ek function k andr {let a = 10;}. To jo
+    let kryword hoga na wo sirf iss block m available hoga
+-> But agar 'i' ko access krne k liye bahar declare krna pdega.
+-> Cruly braces {-------} jo v chijo ko wrap kr leta h wo area block scoped 
+    kehlata hai.
+    Example -
+            if(k % 2 == 0){
+                var hello = 1000;
+                console.log(k);
+            }
+    Aur ye for loop k andr jo braces h usme sama rha h isliye isko block bolte h.
+-> let keyword is block scoped to hm bolte h let jis block k andr defined hua h
+    wo sirf usi braces k andr accessible hoga.
+    */
+
+let m = 20;
+for(var k=0; k < num; k++){
+    let m = 200;
+    if(k % 2 == 0){
+        var hello = 1000;
+        // let bye = 2000;     //ReferenceError: bye is not defined
+        console.log(k);
+    }
+    console.log("inner "+m);
+    console.log("inner "+hello);
+    // console.log(bye);   //ReferenceError: bye is not defined
+}
+console.log("value of k is "+k); 
+console.log(hello);    
+console.log("Outer "+m);
+
+/* Two different 'let' keywords with one name -
+
+Humne pdha tha 'let' keyword reinitialize nhi hota fir v let m = 20;
+fir for loop k andr let m = 200; kaise ho gya?
+-> Yaha 'm' redeclare nhi hua h. Jo for ka block hai iske andr declare hua h
+let m = 200; aur isko andr use hua aur isi k andr khtm v ho jaega. Ye bahar
+nhi aata. 
+Agar mai bahar console.log(m) krwa rha hua to 200 thode print ho rha h.
+Output : 20 aa rha.
+Aur agar m andr k console.log(m); likhta hu to 
+Output : 200
+It means let m = 20; and let m = 200; dono different different container h.
+*/
+
+
+// Array-> is a collection of elements
+// In JS, we can store anything in an array
+
+let cars = ["BMW", "AUDI", "MG", 1, 2, 3, true];
+console.log(cars);
+/*
+In JS, we can store different values of different types in an Array
+*/
+
+//Accessing the elements of an array
+console.log(cars[0]);
+console.log(cars[3]);
+
+
+//replacing elements in arrays
+cars[3] = "Mahindra";
+console.log(cars[3]);
+
+//adding elements in an array
+cars[7] = "Tata";
+console.log(cars);
+
+
+//Methods/Properties of an Array -
+
+// (1) pop method -> This method removes the element from the last of an array
+
+cars.pop();
+console.log("after poping the element-\n"+cars);
+
+// (2) push method -> It pushes a new element at the end of an array
+
+cars.push("Honda");
+console.log("after pushing an element -\n"+cars);
+
+// (3) unshift method -> This adds element at the starting of an array
+
+cars.unshift("JLR");
+cars.unshift("Mustang");
+console.log(cars);
+
+// (4) shift method -> It removes element from 0th index of an array
+
+cars.shift();
+cars.shift();
+console.log(cars);
+//Note : Phle Mustang udega fir JLR udega then print hoga
+
+// (5) find length of an array
+console.log(cars.length);
+
+
+// 2-D Array -
+let array2d = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+];
+
+console.log(array2d);
+console.table(array2d); //it will print array in table format
+console.log(array2d[1][2]);
+
+
+
 Day-12 :
 Today's Session -
 (1) Some properties/method of an array
@@ -64,6 +439,195 @@ and wo as a whole ek array kehlati hai.
     int hi daal skte ho. isme kuch v daal skte h, eksaath integer, boolean, string etc
     daal skte hai. Hum koi v bucket m koi v tarah ka samaan daal skte hai.
 
+
+// Array-> is a collection of elements
+// In JS, we can store anything in an array
+
+let cars = ["BMW", "AUDI", "MG", 1, 2, 3, true];
+console.log(cars);
+/*
+In JS, we can store different values of different types in an Array
+*/
+
+//Accessing the elements of an array
+console.log(cars[0]);
+console.log(cars[3]);
+
+
+//replacing elements in arrays
+cars[3] = "Mahindra";
+console.log(cars[3]);
+
+//adding elements in an array
+cars[7] = "Tata";
+console.log(cars);
+
+
+//Methods/Properties of an Array -
+
+// (1) pop method -> This method removes the element from the last of an array
+
+cars.pop();
+console.log("after poping the element-\n"+cars);
+
+// (2) push method -> It pushes a new element at the end of an array
+
+cars.push("Honda");
+console.log("after pushing an element -\n"+cars);
+
+// (3) unshift method -> This adds element at the starting of an array
+
+cars.unshift("JLR");
+cars.unshift("Mustang");
+console.log(cars);
+
+// (4) shift method -> It removes element from 0th index of an array
+
+cars.shift();
+cars.shift();
+console.log(cars);
+console.table(cars);
+//Note : Phle Mustang udega fir JLR udega then print hoga
+
+// (5) find length of an array
+console.log(cars.length);
+
+
+// 2-D Array -
+let array2d = [
+    ['BMW', 2, null, 45],
+    [4, true, 6],
+    [7, '8', 9]
+
+];  //array of arrays
+
+["a", "b", "c"]     //array of string
+[1, 2, 3]           //array of numbers
+
+console.log("Printing 2d array");
+console.log(array2d);   //it prints 2d array
+
+console.log("Printing 2d arrayin table format"); 
+console.table(array2d);//it will print array in table format
+
+console.log("Printing elements of 2d array");
+console.log(array2d[1][2]); //means 1st index pe jaa k 2nd cmma k baad wali value select krni hai
+
+let res = array2d[2];
+console.log("printing of res array");
+console.log(res);
+
+console.log("res of 2nd index");
+console.log(res[2]);
+console.log(array2d[1][2]);
+console.log(array2d[1][3]);   //undefined -> means waha pe koi value ni hai
+console.log(array2d);
+console.log(array2d[0]);
+console.log(array2d.length); //number of rows in a 2d array
+console.log(array2d[0].length);    //numbers of columns in a 2d array
+
+
+//Note : JS m koi v chij jiski koi value ni hai wo undefined print hoti hai
+
+//Memory Allocation in 2dArray - (done)
+
+
+//2d mai value kaise daale?
+array2d[1][1] = false;  //true -> false
+console.table(array2d);
+
+//How to change directory?
+//cd -> change directory(folder)
+//ls -> listing of project files
+// .. -> double dot means go back
+// command -> cd folder_name 1:19:15
+
+
+
+Strings :
+/*
+string is a sequence of characters
+-> String m bahut characters hote hai like - 'h' is one character, blank space
+    is also one character.
+
+-> slice method - Isme ek start index dete h aur ek end index aur uske bich
+                    ki jo string hote h isse wo kaat deti hai.
+*/ 
+
+var str = "Hello future coder";
+// H  e  l  l  o  <space>  f  u  t  u  r  e  <space>  c  o  d  e  r 
+// 0, 1, 2, 3, 4,    5,    6, 7, 8, 9, 10,11,   12,   13,14,15,16,17
+console.log(str);
+console.log(str[4]);
+console.log(str.length);
+
+//String methods -
+
+// (1) Extraction method
+// (a) slice method -
+//  -> slice(start, end+1); -> start index is inclusive(shuru hoti h) and end index is exclusive(Isko exclude kr deti h)
+//jo string kt rhi wo slicedStr k andr store ho rhi aur original string (str) change ni hoti(usko harm ni pahuchata)
+//so it means agr mujhe kisi string ki koi part chaiye to without hamper kiye mai uska part kaat k le aaunga
+
+let slicedStr = str.slice(6, 12); //6th index se shuru hoga aur 12th index se ek phle string tk kategi
+console.log(slicedStr); //without hampering original string we can use their part of string
+console.log(str);   //original source of information will not changed
+
+
+let slicedStr1 = str.slice(6); //6th index se shuru hoga jo last index tk jaega
+console.log(slicedStr1);
+
+let slicedStr2 = str.slice(6, -2); //6th index se shuru krni h lekin last k 2 index chorni h
+console.log("minus "+slicedStr2);
+
+// (b) substring method - 
+// substr(start, length); start index se shuru hoga fir btaenge aage k kitne characters capture krna h (6 characters)
+let slicedStr3 = str.substr(2, 6);
+console.log(slicedStr3);
+console.log(str);
+//Note : Ye method aisa isliye aa rha bcoz this method is no longer in use
+
+//changing to lowercase
+let slicedStr4 = "YOLO";
+console.log(slicedStr4);
+console.log(slicedStr4.toLowerCase()); //yolo
+
+//changing to uppercase
+let slicedStr5 = "fomo";
+console.log(slicedStr5) //information is intact and has not been tampered with
+console.log(slicedStr5.toUpperCase()); //FOMO
+
+//(c) concatenation method -> concatenation means kisi do chijo ko jodna
+let firstStr = "Believe in ";
+let secondStr = "yourself";
+
+let concatenationedStr = firstStr+secondStr;
+console.log(concatenationedStr);
+
+let concatStr = firstStr.concat(secondStr, " and me");
+console.log(concatStr);
+
+
+//(d) trim method -> removes all the whitespaces of starting and ending of a string
+
+let trimStr = "        Hello    World       ";
+console.log("Before triming, count of characters are -")
+console.log(trimStr.length);
+console.log(trimStr); //space aa gya isme
+
+console.log("After triming, count of characters are -")
+console.log(trimStr.trim().length);
+console.log(trimStr.trim()); //string k andr k shuru and last k jitne spaces h sb nikal dnge
+
+
+//Note : String is Immutable -> 
+var immutableStr = "Hi String";
+console.log(immutableStr);    //Hi String
+console.log(immutableStr.length); //9
+
+immutableStr[9] = "s"; //strings are immutable
+console.log(immutableStr);    //Hi String
+console.log(immutableStr.length); //9
 
 Assignment : Complete 113 question from freeCodeCamp
 Link : freecodecamp.org/learn/javascript-algorithms-and-data-structures/
@@ -196,6 +760,122 @@ let car = {
 Yha pe this keyword means hum jis object k andar hai. 
 Avi hum car keyword k andar h na to this means -> car hai, aur hum this keyword tabhi use kr skte hai jb hm uss object k andar ho. 
 To this.name -> car.name -> "Ferrari" aa jaegi
+
+
+//JS Objects are always in key value pair
+
+let obj = {};   //empty object
+console.log(obj);
+
+let person = {
+//  key :   value
+    name : "Abhishek",  //Key=name, Value="Abhishek", comma for next key value pair
+    age : 26,
+    phone : 9999999999,
+    gender : "male",
+    height : "170cm"
+};
+
+console.log(person);
+console.log(person.name);
+console.log(`Hey ${person.name}, thanku you for standing up`);
+console.log(person.gender);
+
+
+let str = "Hello";
+console.log(str.length);    //dot notation
+console.log(str["length"]); //square bracket notation
+
+// nesting of objects
+let captainAmerica = {
+    firstName : "Steve",
+    lastname : "Rogers",
+    friends : ["Buckey", "Tony Stark", "Bruce Banner"],
+    age : 102,
+    isAvenger : true,
+    address: {
+        state: "Manhattan",
+        city: "New York",
+        country: "USA"
+    },
+    sayHi: function () {
+        console.log(`Hello my name is ${this.firstName}`);
+    }
+};
+console.log(captainAmerica);
+console.log(captainAmerica.friends);
+console.log(captainAmerica.friends[0]);
+console.log("print using bracket notation - "+captainAmerica["friends"][0]);
+captainAmerica.sayHi();    //method accessing
+// nested objects
+console.log(captainAmerica.address.city);
+// verify boolean, functions etc...
+console.log(typeof captainAmerica.isAvenger);
+console.log(typeof captainAmerica.sayHi);
+// deleting the key of an object
+delete captainAmerica.lastname;
+console.log(captainAmerica.lastname);
+
+
+// methods -> objects k andr functions
+console.log(str.toLocaleUpperCase());
+
+
+// -> In JS, everything is Objects.
+// arr v ek object hai
+let arr = ["a", "b", 1, true];
+
+let arrr = {
+    0: "a",
+    1: "b",
+    2: 1,
+    3: true
+}
+// actually m js aise bnta h internally
+
+
+// arr & arr1 bhi ek object hai
+// JS m array jaisa kuch ni hota, wo andr ek object bna hua hota hai
+// Jb aise likhte hai let arr = ["a", "b", 1, true]; to wo actually mai aisa bnta h -
+// let arr1 = {
+//     0: "a",
+//     1: "b",
+//     2: 1,
+//     3: true
+
+
+// for loop kaise lagate hai - (keys dekhne ka tarika)
+// in keyword in JS is used to get keys from that object
+for(let haathi in captainAmerica) {
+    console.log(haathi);//(isme sirf property name print hogi)
+    // humien directly pta h ki uske andr key(friends) pdi hui h isliye hm direclty dot notation use krte hai
+    // console.log(captainAmerica.friends); 
+
+    //means captainAmerica k andr jao aur ek haathi naam ki key/keyword dhund k lao
+    // Lekin andr hathi naam ki key h hi nhi to print hoga hi nhi
+    // console.log(captainAmerica.haathi); 
+
+    //agar hum [] bracket notation use krte hai to iska mtlb hathi variable k andr jo value pdi h wo laa k yha daal do
+    //humein maalum hi ki captain america k frnds h unke value print kr k laani h
+    console.log(captainAmerica[haathi]); //(isme property value print hogi )
+    // ye captainAmerica m jaega aur ek baar key ko uthaega aur haathi m daal k print kr dega
+    // fir wo value ko uthaega aur hathi m daal dega aur print kr dega
+    // dhire dhire sb ko waise hi uthaega captainAmerica se loop khtm hone tk
+}
+
+
+// ------------------------------------------------------------------
+
+// this keyword
+let car1 = {
+    name: "Ferrari",
+    model: 2022,
+    startEngine: function() {
+        console.log(`Starting the engine of the ${this.name}`);//car.name
+    }
+};
+
+car1.startEngine();
 
 Day-14, 15 & 16 :
 Today's Session -
