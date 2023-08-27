@@ -500,3 +500,10 @@ console.log(age);   //23 //'age' is the key
 
 Create react app command -
 -> npx create-react-app reactapp
+
+
+Today's Agenda :
+1) React CDN Link
+2) Basics of React
+3) todo app using react
+4) Movies App using React
