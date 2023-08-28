@@ -507,3 +507,49 @@ Today's Agenda :
 2) Basics of React
 3) todo app using react
 4) Movies App using React
+
+Note : July end tk humare paas 3 projects ready ho jaenge -
+
+-> React JS is a JavaScript Library (not framework)
+-> It is used for building UI (User Interface)
+-> Developed by Meta (Facebook)
+
+Q) Jb hm HTML+CSS+JS use kr rhe the to humein ReactJS ki jarurt q padi?
+-> Humne HTML+CSS+JS likha, to iska DOM (Document Object Model) banta h aur browser pe render (display) hota h
+-> HTML+CSS+JS --> DOM --> Render on Browser (Normal Flow)
+-> Maine ek code likha to mere paas ReactJS ka ek algo h "Diffing Algo" -> It identifies changes made in code.
+-> Iske baad ek chij banti h known as "Virtual DOM" -> Identifies the required changes.
+-> Fir humara DOM banta h 
+-> At last Browser render hota h
+-> Code --> React Algo (Diffing) --> Virtual DOM --> Render on Browser
+
+=> Maine "code" likha aur maine code m dynamically kuch change ho rha h to ye "Diffing Algorithm" ko pta lgega ki humne kn si line m change kiya h, fir ye ek "Virtual DOM" banega aur wo bolega mai pta lga lunga changes kaha kaha hue h aur fir ye DOM banega.
+
+Example, Meri ek "Shopping List" h jisme maine kuch item daale -
+1) Banana
+2) Apples
+3) Oranges
+4) Pineapple -> Maine suddenly pineapple delete kiya, uske jagha "Blueberry" daala
+-> Conventional Method m agar hum frontend m kuch change krte h to poora page reload hota h, fir wapas se DOM create hota h then humara rbowser dekhta h then browser render krta h ye saari chije -
+1) Banana
+2) Apples
+3) Oranges
+4) Blueberry
+-> But in case of ReactJS, Shopping list m se agar Blueberry change hu h to sirf mera Blueberry wala area hi update ho k aaega.
+-> So, ReactJS k case m maine code likha, changes kiya to mera "Diffing" algo changes ko identify kr lega jo changes maine banae. To usne identify kr liye "Pineapple" delete ho k "Blueberyy" ho gya. Fir Virtual DOM required changes kr deta h. Fir DOM sirf "Blueberry" jitna hi DOM banata h aur baaki k DOM k saath chipka k browser m render kr deta h. (That's why it is fast)
+
+Advantages :
+1) Very fast (Qki waha jo sirf changes ko load krega, baaki waise hi rhega)
+2) Easy Event Handling (shortcuts)
+3) Small Library --> Easy to learn (Compare to Angular etc...)
+4) Manages UI by state (-> on state change, UI changes accordingly 
+--> Conside state as variable for now. Ab koi variable change hoga (x=10), agar x = 11 ho gyi na to UI v uske accordingly change hoga.
+
+
+Components :
+-> ReactJS m ek chij hota h "components" which is -
+1) isolated, reusable, independent piece of code.
+
+Two types of Components :
+1) Functional Component
+2) Class Component

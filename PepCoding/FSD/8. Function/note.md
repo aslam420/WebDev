@@ -168,3 +168,9 @@ Output :
 23
 
 Note : variableName = (parameter) => return value; 
+NOte : For more than one returnType use curly braces -
+variableName = (parameter) => 
+{
+    console.log(num);
+    console.log("hi");
+}
