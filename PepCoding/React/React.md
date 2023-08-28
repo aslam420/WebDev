@@ -553,3 +553,220 @@ Components :
 Two types of Components :
 1) Functional Component
 2) Class Component
+
+--> Function Component :
+    // JSX -> JS + XML
+    function Element(){
+        return(
+            <h1>Hello</h1>
+        )
+    }
+
+
+
+JSX : JS + XML
+-> JSX allows us to write HTML inside of JS and place them in DOM without using functions like createElement() or appendChild()
+
+-> Hum HTML+CSS+JS likhte h aur wo chup chap browser pe render ho jaati hai lekin hm jaise hi browser pe JSX likhte h to browser ko smjh hi nai aata. Tb "babel" as a middle men aata h jo JSX ko JS m convert kr deta h aur browser usko smjh jaata h aur fir browser pe render ho jaata h.
+-> [JSX --> Babel --> JS --> Browser]
+
+
+    //Code reusability
+    function Main(){
+        return(
+            <div>
+            <Element/>
+            <Element/>
+            <Element/>
+            <Element/>
+            <Element/>
+            </div>
+        )
+    }
+-> But ye keh rha h ki jo tm return kr rhe ho na use wrapper hona chaiye means ekhi banda mujhe return kro aur uss bande k andr jitne marji log daal k de do. So, we will wrap it inside <div> container.
+
+    //Code reusability - we can only return one element inside return
+    // Soln : Wrap the components in <div> or use React.Fragment
+    function Main(){
+        return(
+            // <div>
+            //     <Element/>
+            //     <Element/>
+            //     <Element/>
+            //     <Element/>
+            //     <Element/>
+            // </div>
+
+            <React.Fragment>
+                <Element/>
+                <Element/>
+                <Element/>
+                <Element/>
+                <Element/>    
+            </React.Fragment>
+        )
+    }
+
+    // ReactDOM.render(<Element/>, document.getElementById('root'));
+    // Ab mujhe <Element/> nai, <Main/> render karwana h
+    ReactDOM.render(<Main/>, document.getElementById('root'));
+    /* Ye render <Main/> wale component pe gya aur return kr diya 5 element. Fir wo internally
+    puchega ye 5 element h kya. To fir wo element() function/component k andr jaa k dekhega
+    "Hello" likha hua h to wo "Hello" print kr dega.*/
+
+Q) Hum ReactDOM ek baar likhte h, agar koi puche ki ReactDOM kitne baar likh skte h?
+-> Agar humne 2 ReactDOM.render() chalaya to jo last wala ReactDOM.render() wahi persist krega aur niche wala upar wale ko override kr dega.
+
+Rules for using JSX : Jb hum return(JSX) likhte h tb open-close bracket k bich m hum JSX likhnge, to ye sb usi k rules h -
+-> Not allowed -
+1) var declaration not allowed 
+2) function declaration not allowed
+3) Loop (for, while, do-while etc..) not allowed
+4) if-else statements not allowed
+5) Object render not allowed 
+-> Agar ye sb allowed nai h to inke alternatives kya h?
+1&2)function declaration and variable declaration means hum return k andr  ek function nai likh skte ya let a = 2 nai likh skte. So, variable and function declare nai kr skte. To in dono ka alternative h we will see later
+3) loops k jagha HOF(higher order functions) like map, filter, reduce etc use kr skte h
+4) if-else k jagha "ternary operator" use kr skte h
+5) Object ki rendering k jagha hum arrays ki rendering use krte h
+
+=> Wo function h kya jisme hum apna argument naa de pae. Jo hum function k andr argument dete h to wo ab function nai h functional component h to wo argument nai hoga, uss argument ko react m hm "props" bolte h.
+--> function => argument
+--> functional Component => props
+
+ <React.Fragment>
+                <Element name = "Sidhu Moosewala"/>
+                <Element/>
+                <Element/>
+                <Element/>
+                <Element/>    
+            </React.Fragment>
+-> Ab mai chah rha hu ki "Hello" k saath "Siddhu Moosewala" print ho. Maine maje m apne function ko argument bhj diya (ye ek tarike se functional component ki call h). To jb function call krte h wo parameter v to leta h to usko hum "props" likh denge
+    // JSX -> JS + XML
+    function Element(props){
+        //props ko print kr lete h
+        console.log(props);
+        return(
+            <h1>Hello</h1>
+        )
+    }
+
+    function Main(){
+        return(
+
+            <React.Fragment>
+                <Element name = "Sidhu Moosewala"/>
+                <Element/>
+                <Element/>
+                <Element/>
+                <Element/>    
+            </React.Fragment>
+        )
+    }
+->Ye console m object k tarah aaya
+Console : 
+{name: 'Sidhu Moosewala'}
+{}
+{}
+{}
+{}
+-> But bakki sb k liye empty object gya
+
+-> Ab variable likhne k liye {} k andr likhte h -
+{props.name}
+
+UI :
+Hello Sidhu Moosewala
+Hello
+Hello
+Hello
+Hello
+
+-> To kya mai isko aise likh skta hu -
+    function Element(name){
+        //props ko print kr lete h
+        console.log(name);
+        return(
+            <h1>Hello {name}</h1>
+        )
+    }
+
+    function Main(){
+        return(
+
+            <React.Fragment>
+                <Element name = "Sidhu Moosewala"/>
+                <Element/>
+                <Element/>
+                <Element/>
+                <Element/>    
+            </React.Fragment>
+        )
+    }
+--> Isko hum destructuring bolnge
+
+-> Ab maine destructure kr k nikaal liya, to har kisi k aage kuch aa ni rha ek ko chor k.
+-> Ab name k aage by default "myName" likh dete h -
+    function Element({name = "myName"}){
+        console.log(name);
+        return(
+            <h1>Hello {name}</h1>
+        )
+    }
+-> Isse ye hoga ki jo khali the unke aage myName print ho jagea -
+Output :
+Hello Sidhu Moosewala
+Hello myName
+Hello myName
+Hello myName
+Hello myName
+
+-> Hum aur v chije de skte h -
+    function Element({name = "myName", city}){
+        console.log(name);
+        return(
+            <h1>Hello {name}</h1>
+            <h2> {city} </h2>       //ye error de rhi. <div> k andr dono ko krne se thk ho jaega
+        )
+    }
+        function Main(){
+        return(
+
+            <React.Fragment>
+                <Element name = "Sidhu Moosewala" city = "Punjab"/>
+                <Element/>
+                <Element/>
+                <Element/>
+                <Element/>    
+            </React.Fragment>
+        )
+    }
+Solution :
+    function Element({name = "myName", city}){
+        console.log(name);
+        return(
+            <div>
+            <h1>Hello {name}</h1>
+            <h2> from {city} </h2>
+            </div>
+        )
+    }
+            function Main(){
+        return(
+
+            <React.Fragment>
+                <Element name = "Sidhu Moosewala" city = "Punjab"/>
+                <Element/>
+                <Element/>
+                <Element/>
+                <Element/>    
+            </React.Fragment>
+        )
+    }
+-> <div> sbko ek block level element m daal dega
+-> <ReactFragment> as a wrapper kaam krega
+Note : Humne functional component sikh liye, ab hum class component sikhnge
+
+
+Class Component :
+2:16:33

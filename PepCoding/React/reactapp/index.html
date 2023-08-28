@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script> 
+    <title>Function Component</title>
+</head>
+<body>
+    <div id="root">Hello</div>
+</body>
+<script type="text/babel">
+
+    //same chij ko react m likhnge
+    /*react se pehle kuch chij se help leni pdti h -
+    1) React Algorithm (Diffing)
+    2) Virtual DOM
+    -> Inn dono ko access/import krnge tb to react ka code bana paenge
+    -> React Page m jaa k CDN Links uthaenge jisme -
+    (a) React k andr "Diffing" Algorithm h
+    (b) React DOM k andr Virtual DOM h
+    
+    Ek aur kaam krna h ki "babel" ka CDN le k aana h -
+    (we will learn later)
+
+    -> Ab humara kaam h ek functional component banana -
+    */
+
+   /*
+   Hum dkhnge yhi same kaam hm react m kaise krnge -
+       let ele = document.createElement("h1");
+    ele.innerText="Hello";
+    let root = document.getElementById("root");
+    //ab root k andr append kr dnge jisse mere UI m dikhne lg jae
+    console.log(ele);
+    root.appendChild(ele);
+    */
+
+    //isko bolnge "h1" create krna h aur object ka sign
+//    let ele = React.createElement("h1", {
+//         children: ["Hello"]
+//    });    
+//    console.log(ele);
+//    let root = document.getElementById("root");
+//    root.appendChild(ele); 
+//    ReactDOM.render(ele, root);
+
+    // JSX -> JS + XML
+    // function Element(props){
+    //     //props ko print kr lete h
+    //     console.log(props);
+    //     return(
+    //         <h1>Hello {props.name}</h1>
+    //     )
+    // }
+
+    function Element({name = "myName", city = "Delhi"}){
+        console.log(name);
+        return(
+            <div>
+            <h1>Hello {name}</h1>
+            <h2> from {city} </h2>
+            </div>
+        )
+    }
+
+    //Code reusability - we can only return one element inside return
+    // Soln : Wrap the components in <div> or use React.Fragment
+    function Main(){
+        return(
+            // <div>
+            //     <Element/>
+            //     <Element/>
+            //     <Element/>
+            //     <Element/>
+            //     <Element/>
+            // </div>
+
+            <React.Fragment>
+                <Element name = "Sidhu Moosewala" city = "Punjab"/>
+                <Element/>
+                <Element/>
+                <Element/>
+                <Element/>    
+            </React.Fragment>
+        )
+    }
+
+    // ReactDOM.render(<Element/>, document.getElementById('root'));
+    // Ab mujhe <Element/> nai, <Main/> render karwana h
+    ReactDOM.render(<Main/>, document.getElementById('root'));
+    /* Ye render <Main/> wale component pe gya aur return kr diya 5 element. Fir wo internally
+    puchega ye 5 element h kya. To fir wo element() function/component k andr jaa k dekhega
+    "Hello" likha hua h to wo "Hello" print kr dega.*/
+</script>
+</html>
