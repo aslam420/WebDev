@@ -767,6 +767,415 @@ Solution :
 -> <ReactFragment> as a wrapper kaam krega
 Note : Humne functional component sikh liye, ab hum class component sikhnge
 
+Agenda :
+1) Class Component
+2) To do app
 
+=> Functional Component tb banate h jb humein static UI banana ho, aur jb humein dynamic UI banana ho to hum class compoenent banaenge.
+Note : But ab function ko v use kr k dynamic UI bana skte h using "Hooks"
 Class Component :
-2:16:33
+-> 
+
+"+" button aur ek "-" button aur bich m kuch number hoga "30" to jb mai "+" click karunga to "31" aa jaega aur fir "-" click karunga to wapas se "30" aa jaana chaiye. So, basically hum ek counter banana chah rhe h.
+Note : Common ReactJS Interview Question -
+-> Using function component or class component create Counter
+
+    class Counter extends React.Component{
+        constructor(){
+            
+        }
+    }
+1) state :  
+-> Stores information of React Components (Consider it as React Object)
+-> class component k andr ek chij hoti h "state". Jo state hoti h wo information store krta h humare component ki (React Object). To humare component k andr kuch information display krna h aur wo display change hoti h to wo "state" k andr change krnge.
+2) render() : Jb v mera "state" change hoga, humara render method call hoga
+   
+=> "state" har ek react component k liye hota h. To maine ek react component banaya aur uske andr "state" rakhi, aur agar meri uss react component k andr "state" change hoti to "render" method call hoga and that component is re-rendered -
+    class Counter extends React.Component{
+        constructor(){
+            this.state={
+                count: 0
+            }
+        }
+    }
+=> Ab humne "extends" kiya h to "super()" keyword call krna padta h ko ki parent ki property ko pehle chalaega (React.Component). Ab humne "React.Component" extend kiya h to ye hmko ek method deti h "render()", aur ye render() method hi saara jaadu karti h. Ye dhyan rkhti h ki "state" chnage hua ya nai. Agar "state" change hue h to ye fatafat aaegi aur uss wale component ko re-render kr degi. (Poori website re-render ni hogi sirf ek particular component isliye react fast hoti h)
+
+        render(){
+            return(
+                <button></button>
+            )
+        }
+-> Ab iske andr button banani h "+" wala, fir "h1" tag likhna h aur uske andr {this.state.count} likhna h aur isse yha hum apna count print kr skte h. Similarly, "-" k liye krnge -
+ render(){
+            return(
+                <button>+</button>
+                <h1>{this.state.count}</h1>
+                <button>-</button>
+                <h1>{this.state.count}</h1>
+            )
+        }
+-> Ye code error de rha h q ki multiple chije hm return ni kr skte to sbko wrap kr denge -
+render(){
+            return(
+                <React.Fragment>
+                <button>+</button>
+                <h1>{this.state.count}</h1>
+                <button>-</button>
+                </React.Fragment>
+            )
+        }
+Note : Hum "+" pe click kr rhe h to kuch ho ni rha h. Aur humari expectation h ki jb mai "+" dabau to "state" change ho. State change krne k liye hum ek "increment" function banaenge, ab iss "increment" function kaam ye hoga ki ye mere state ko change krega -
+
+-> "setState" ek method hota hai jiske andr hum object ppass krnge {this.state.count} -> aur iski value kya hogi? Jo puraani valiue thi usme +1 => count: this.state.count+1. To mera puraana wala "Count" + "1".
+
+        increment=() => {
+            this.setState({
+                count: this.state.count+1
+            })
+        }
+
+-> Ab "button" pe ek "onClick" naam h event listener lagaynge aur usme curly braces denge - onClick{}. Curly braces isliye q ki humein apna function iske andr call krna h. Means batana h ki jb click ho to ye "this.increment"pe call ho jaega.
+        render(){
+            return(
+                <React.Fragment>
+                <button onClick={this.increment}>+</button>
+                <h1>{this.state.count}</h1>
+                <button>-</button>
+                </React.Fragment>
+            )
+        }
+-> Similar chij ab "-" k liye banaenge -
+        decrement=() => {
+            this.setState({
+                count: this.state.count-1
+            })
+        }
+
+Code :
+    class Counter extends React.Component{
+        constructor(){
+            super()
+            this.state={
+                count: 0
+            }
+        }
+
+        increment=() => {
+            this.setState({
+                count: this.state.count+1
+            })
+        }
+
+        decrement=() => {
+            this.setState({
+                count: this.state.count-1
+            })
+        }
+
+        render(){
+            return(
+                <React.Fragment>
+                <button onClick={this.increment}>+</button>
+                <h1>{this.state.count}</h1>
+                <button onClick={this.decrement}>-</button>
+                </React.Fragment>
+            )
+        }
+    }
+-----------
+todo App :|
+-----------
+Extension install : ES7+ React/Redux/React-Native/JS snippets
+
+todo App k andr -
+1) Node Modules
+2) public folder
+3) src folder - Iske andr 2-3 chije hoti h -
+        (a) app.js -> Isme function component likha hua h jo kuch return kr rha. Aur isi k wajah se UIm humein display ho rha h
+        Note : Remove all functio() code
+        (b) app.css -> react k css k liye use krte h
+        (c) index.js -> iske andr ek code h -
+            <React.StrictMode>
+                <App />
+            </React.StrictMode>
+        -> Ye <React.StrictMode> ko hata dena h, isse testing wale file run hote h
+        -> At last iske andr <App /> bacha h
+
+=> Now we will create our app -
+Q) Iske andr kya kya krnge?
+-> Humein component banana h to ek "Components" naam ka folder banaenge
+-> Iss Components k andr jo v humare components k naam honge wo banaenge.
+-> Ab humein class components banana h - "rcc" -> press enter -
+rcc -> react class component
+rfc -> react functional component
+
+import React, { Component } from 'react'
+
+export default class Todo extends Component {
+  render() {
+    return (
+      <div>Todo</div>
+    )
+  }
+}
+
+-> Ye code ban k aa jaega
+-> Humein React.Component nai likhna pda qki hum react k todo naam ka folder h uske andr sb react k chije h.
+-> Ab mai isko import karunga "app.js" k andr jisse app.js 
+
+Flow :
+1) index.js -> kn sa element render ho rha h wo pta chlta h (<App/>)
+            -> Hum todo ko <App/> k andr render karwana chahte h to Todo.js ko import kr lenge App.js m aur fir todo ko render krwa denge -
+
+import logo from './logo.svg';
+import './App.css';
+import Todo from '../Components/Todo';
+
+function App() {
+  return (
+    // <h1>Hello from the other side</h1> 
+    <Todo/>
+  );
+}
+
+export default App;
+
+-> Ab maine Todo k andr jo v likha hua hoga wo aaega -
+
+import React, { Component } from 'react'
+
+export default class Todo extends Component {
+  render() {
+    return (
+      <div>Todo</div>
+    )
+  }
+}
+
+Screen : Todo
+
+-> remove Todo and add button and input type=text -
+  render() {
+    return (
+      //<div>Todo</div>
+      <div>
+        <input type = "text"/>
+        <button>Submit</button>
+      </div>
+    )
+  }
+}
+-> Ab mera task ka jo state hoga i.e. this.state jo meri hogi, iske andr ek chij banaenge "tasks" aur wo array[] type hoga aur usko andr [{}. {}, {}] aise objects honga -> Array of objects. 
+this.state={
+    tasks: [{}, {}]
+}
+-> Ab iss object ka andr 2 chij store krnge -
+(a) id: 1
+(b) task: studyJS (task kya h? jaise StudyJS)
+(c) id: 2
+(d) task: studyDSA
+
+-> Iske liye pehle constructor() banaenge -
+  constructor(){
+    super();
+    this.state={
+      tasks:[
+        {id:1, task:"Revise JS"}, 
+        {id:2, task:"ReviseDSA"}]
+    }
+  }
+  render() {
+    return (
+      //<div>Todo</div>
+      <div>
+        <input type = "text"/>
+        <button>Submit</button>
+      </div>
+    )
+  }
+-> Ab mujhe ye frontend pe display karwana h -
+-> To hum tasks wale array pe loop lagaenge aur usko baari baari render krnge (agar task wala array change hoga to re-render hoga isliye loop lagaenge)
+Note : Loop lagane k liye "map" use krnge -
+ render() {
+    return (
+      //<div>Todo</div>
+      <div>
+        <input type = "text"/>
+        <button>Submit</button>
+        {
+          this.state.tasks.map()
+        }
+      </div>
+    )
+  }
+NOte :
+        {
+          this.state.tasks.map()
+        }
+-> This curly braces means jb v mai apne jsx k andr pure JS likhna chahta hu tb mai {} braces ka use krta hu
+-> Har baar hmko tasks ka ek object milega -
+ { //use when need to write JS in JSX
+          this.state.tasks.map((taskObj) => {
+            <p>{ taskObj.task}</p>
+          })
+        }
+-> Ye likhne se mera "Revise JS" aa jaega
+Note L <p>{ taskObj.task}</p> Ye HTML element mujhe bhejna g to mai return use krunga aur wrap kr denge.
+      <div>
+        <input type = "text"></input>
+        <button>Submit</button>
+        { //use when need to write JS in JSX
+          this.state.tasks.map((taskObj) => {
+            return(
+            <p>{ taskObj.task}</p>
+            // <button>Submit</button>
+            )
+          })
+        }
+      </div>
+
+Note :
+1) this.state.tasks kye to upar wala "tasks" mil gya.
+2) map() function lagae to humare "tasks" k ek ek index pe jaega aur har index pe ek object pda hua to ({id:1, task:"Revise JS"}) iss poori line ko humne "taskObj" ka naam de diya. Ab iss object k andr se mujhe "task" chaiye isliye maine likha { taskObj.task}
+
+-> But ye warning de rha ki humne jo list banai h usme sbki ki unique key honi jaruri h.
+-> Unique Key k benefits ye h jb mai todo pe delete button dabaunga to to usse aasani se pta chl jaega ki jo ye delete button daba h ye kn si wali id ka daba h -
+-> For example,
+Delete
+Delete  -> click
+Delete
+-> 3 delete button h usme se ek m click kr deta hu to mere react ko mujhe btana hoga ki maine kn sa delete button pe click kiya h. To react bolega tm jo itne saare elements render kr rhe ho, unn sb elements k aage ek naam de do jisse aasni se pta chlega kn si button clcik hui and kn si element delete hogi. (isse rendering fast hogi)
+
+-> Ab <li> k andr id denge -
+            return(
+              <li key={taskObj.id}>
+                <p>{ taskObj.task}</p>
+                <button>Delete</button>
+            </li>
+            );
+
+-> Ab mai ye chahta hu ki jb mai input text pe kb kuch likh k submit pe click kru to wo niche appear ho jae mere list k andr. But kaise krnge?
+=> Input k andr kuch v likhte h to wo input box change hota h to ek event hota h jiska naam h "onChange". To main apne input ko bolunga "onChange{}" fir ek function banaenge jiska naam rkhte h "handleChnage" -> "onChange={this.handleChange}" -
+
+render() {
+    return (  //jsx starts from here
+      //<div>Todo</div>
+      <div>
+        <input type="text" onChange={this.handleChange}/>
+        <button>Submit</button>
+        { //use when need to write JS in JSX
+          this.state.tasks.map((taskObj) => {
+            return(
+              <li key={taskObj.id}>
+                <p>{ taskObj.task}</p>
+                <button>Delete</button>
+            </li>
+            );
+          })
+        }
+      </div>
+    )
+  }
+
+-> Ab hum constructor k bahar ek method banaenge "handleChange" -
+
+  handleChange = ()=> {
+    
+  }
+
+-> Ab mai ye chah rha hu ki jb mai ye function call kr rha hu to automatically iske andr ek "e" aa jaata h. Pehle log kr k dekhte h -
+
+  handleChange = (e)=> {
+    console.log(e.target.value);
+  }
+-> Mai apne input text pe "swiggy" likhta hu to console m aise aa rha h -
+
+Todo.js:14 s
+Todo.js:14 sw
+Todo.js:14 swi
+Todo.js:14 swig
+Todo.js:14 swigg
+Todo.js:14 swiggy
+
+-> "e.target.value" se ye hoga ki jitni baar mai input daal rha hu utni baar se change/update ho rha h and at last "swiggy" show kr rha
+
+Note : Humne pdha tha jb v state change hogi to humara render method baar baar call hoga -
+-> Agar hum "s" likhnge to "s" show rkna chaiye fir agar "w" likhnge to "sw" show krna chaiye -
+(ek curTask: "" bana k empty string de diye qki isi k andr to mai record karunga. Means Input tag k andr kuch v likhnge to wo mere "curTask" k andr record hona chaiye)
+=> curTask: e.target.value -> krne se hoga
+-> Ab input tag m value ki bana lenge -
+    "value={this.state.curTask}"
+
+Console : Ab jaise jaise mera state change ho rha to re-render ho rha h -
+Note : Jb v state change hogi to humara render method call hoga
+---------------------------------------------------------------------------------------------------
+Note : We will see later
+-> Hum spread operator use krnge qki imagine humne ek task likha to mai chahta hu ki mera jo "tasks" naam ka array of object h tasks=[{},{}] wo to aae hi aae aur uske andr new wala object add ho jae - "task=[{},{},{}]". So, mere paas ek aisa task aae jiske andr mere puraane tasks ho aur new wale tasks v ho.
+Way-1 : Puraane task ko likh dena aur spread operator kr k new ko daal dena fir ek array m enclosed kr denge -> task=[...{}]
+(ek curTask: "" bana k empty string de diye qki isi k andr to mai record karunga. Means Input tag k andr kuch v likhnge to wo mere "curTask" k andr record hona chaiye)
+---------------------------------------------------------------------------------------------------
+
+Debouncing & Throttling:
+-> Jb hm flipkart pe search kr rhe hote h like we search "iphone" ab jaise hm "i" likhte h to isme v "onChange" wala event listener laga hota h to ye ja k "i" se bahut saare result le kr aata h lekin problem ye h ki isse server ko bahut saare calls lg rhe h qki ye "i" krega aur database m jaa k search kr k aaega ki kaha pe use ho rha h aur "i" se kya kya aata h. "i" se start hone wale top results laa k show kr dega but agar user bina pause k likhega to uske baad result fetch ho k aata h. So, this debouncing and throttling makes our calls to database very less so humare server ki cost km ho jaati h qki jitne baar hm call krnte h server wale company se waise paise lete h.
+
+-> Ab code likhnge ki button ko jb click krnge to submit krnge to handleSubmit naam ka ek function bana lete h -
+
+handleSubmit = ()=> {
+    
+  }
+-> Ab isko "this.setState" aur isko bolnge tasks k aage poora spread kra denge -
+    this.setState({
+        tasks:[...this.state.tasks, {task:this.state.curTask, id:this.state.tasks.length+1}]
+    })
+-> Aur id mai maine ye kiya ki jo mere tasks k array k length h na usme +1 qki maine shuru mai Id=1, Id=2 diya h to avi tk length =2 thi to ab length = 2+1 -> 3 hoga
+
+export default class Todo extends Component {
+  constructor(){
+    super();
+    this.state={
+      tasks:[
+        {id:1, task:"Revise JS"}, 
+        {id:2, task:"ReviseDSA"}
+      ],
+      curTask:""
+    }
+  }
+
+  handleChange = (e)=> {
+    console.log(e.target.value);
+    this.setState({
+      curTask: e.target.value
+    })
+  }
+
+  handleSubmit = ()=> {
+    this.setState({
+      tasks:[...this.state.tasks, {task:this.state.curTask, id:this.state.tasks.length+1}]
+  }) 
+  }
+
+  render() {
+    console.log("render method is calling");
+    return (  //jsx starts from here
+      //<div>Todo</div>
+      <div>
+        <input type="text" value={this.state.curTask} onChange={this.handleChange}/>
+        <button onClick={this.handleSubmit}>Submit</button>
+        { //use when need to write JS in JSX
+          this.state.tasks.map((taskObj) => {
+            return(
+              <li key={taskObj.id}>
+                <p>{ taskObj.task}</p>
+                <button>Delete</button>
+            </li>
+            );
+          })
+        }
+      </div>
+    )
+  }
+}
+
+
+
+Note : "this.setState" ek inbuilt function jo humare state ki value ko change kr skta h. To jb isko bulaya jaata h tb render() ko pta chl jaata h ki agli baari meri h
