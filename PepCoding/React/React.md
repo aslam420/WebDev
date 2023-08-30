@@ -1179,3 +1179,62 @@ export default class Todo extends Component {
 
 
 Note : "this.setState" ek inbuilt function jo humare state ki value ko change kr skta h. To jb isko bulaya jaata h tb render() ko pta chl jaata h ki agli baari meri h
+
+
+<button onClick={this.handleDelete}>Delete</button>
+=> Jb v mai kisi button pe click krta hu to har list k saath ek "id" h jiske andr uska task aur delete wala button h. To jb v hum button pe click krnge humare paas ek "id" aa jaegi aur wo "id" ko use kr k apne task array k andr se usko delete kr denge
+
+Steps to delete :
+1) handleDeleteTasks() function
+2) Jb hum "hello" wale k "delete" button ko click krte h to uski id Pass hogi mere method m- 
+   handleDeleteTasks(id) => {
+    (a) use filter method -> jisko click kiye wo wali 'id' ko chor kr baaki saari 'id' ek task array m aa jae aur ye wali "id" filter out ho jae
+    (b) Ab jo array humne banaya usko "setState" kr do to re-render hoga to jo updated values honge wo dikhega.
+   }
+
+Subtasks :
+1) filter() method : .filter method kispe lagaunga? Apne "tasks" k upar lagaunga -
+   => this.state.tasks.filter(id) <-- Yha mujhe id milegi to kuch logic likhnge
+
+   -> Ab jitni baar filter karunga to object milega -
+   handleDelete = (id) => {
+    this.state.tasks.filter(taskObj) => {
+
+    }
+  }
+  => Ab jb v mujhe ek object milega to usme se uski "id" nikaal lunga, aur mai bolunga "id" return kro which is not equal to the Id given -
+  handleDelete = (id) => {
+    this.state.tasks.filter(taskObj) => {
+      return tasksObj.id != id
+    }
+  }
+
+  -> Ab this.setState kr denge, aur mujhe pta h ki filter method new array le k aata h to jb v chij ye filter kr k laega wo iss arrar m aa jaega aur hum setState ko spread kr denge -
+
+  handleDelete = (id) => {
+    let narr = [];
+    narr = this.state.tasks.filter((taskObj) => {
+      return taskObj.id != id
+    });
+    this.setState({
+      tasks: [...narr]
+    })
+  }
+
+Q) Kaise pta chlega ki jiss button ko mai daba rha hu uski id kya h?
+=> "taskObj.id" se pta chlta h - 
+  <button onClick={this.handleDelete(taskObj.id)}>Delete</button>
+-> But result ni aa rha q ki {this.handleDelete(taskObj.id)} ye to function call h aur mujhe function call nai krna h, mujhe to apne function ki definition pass krni thi. To ab hm isko ek arrow function mwrap kr denge jo this.handleDelete(taskObj.id) ye function return kr rha h-
+=> <button onClick= {() => { this.handleDelete(taskObj.id) }}>Delete</button>
+-> Ab jb ye this.handleDelete(taskObj.id) function call hoga to ye handleDelete() function return krega to mera kaam chl jaega.
+Note : Jb v humein argument pass krna ho to ek arrow function m wrap kr denge
+
+Q) Input text auto empty kaise krnge?
+-> curTask: "" -> empty ho jaega
+
+  handleSubmit = ()=> {
+    this.setState({
+      tasks:[...this.state.tasks, {task:this.state.curTask, id:this.state.tasks.length+1}],
+      curTask: ""
+  }) 
+  }

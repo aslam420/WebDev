@@ -21,8 +21,19 @@ export default class Todo extends Component {
 
   handleSubmit = ()=> {
     this.setState({
-      tasks:[...this.state.tasks, {task:this.state.curTask, id:this.state.tasks.length+1}]
+      tasks:[...this.state.tasks, {task:this.state.curTask, id:this.state.tasks.length+1}],
+      curTask: ""
   }) 
+  }
+
+  handleDelete = (id) => {
+    let narr = [];
+    narr = this.state.tasks.filter((taskObj) => {
+      return taskObj.id != id
+    });
+    this.setState({
+      tasks: [...narr]
+    })
   }
 
   render() {
@@ -37,7 +48,7 @@ export default class Todo extends Component {
             return(
               <li key={taskObj.id}>
                 <p>{ taskObj.task}</p>
-                <button>Delete</button>
+                <button onClick= {() => { this.handleDelete(taskObj.id) }}>Delete</button>
             </li>
             );
           })
